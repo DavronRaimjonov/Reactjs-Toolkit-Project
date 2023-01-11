@@ -1,0 +1,36 @@
+.navbar {
+  padding: 10px 0;
+  position: sticky;
+  top: 0;
+  &_logo {
+    img {
+      width: 150px;
+    }
+  }
+  &_links {
+    display: flex;
+    gap: 30px;
+    .link {
+      color: #333;
+      font-size: 18px;
+      font-weight: 600;
+      transition: 0.3s;
+      &:hover {
+        font-weight: 600;
+        color: #7649bb;
+      }
+    }
+    .link_color {
+      color: #7649bb;
+    }
+    .link_active {
+      font-weight: 600;
+      color: #7649bb;
+    }
+  }
+}
+.flex {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}

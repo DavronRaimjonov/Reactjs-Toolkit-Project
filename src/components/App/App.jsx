@@ -1,8 +1,9 @@
 import { Route, Routes } from "react-router-dom";
-import { Home, Registr, Login } from "../";
+import { Home, Registr, Login, Navbar } from "../";
 const App = () => {
   return (
     <>
+      <Navbar />
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/registr" element={<Registr />} />

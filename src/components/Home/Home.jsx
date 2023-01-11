@@ -3,10 +3,9 @@ import { Link } from "react-router-dom";
 
 const Home = () => {
   return (
-    <div>
-      Home
-      <Link to={"/registr"}>Salom</Link>
-    </div>
+    <section className="home">
+      <div className="container">Home</div>
+    </section>
   );
 };
 
