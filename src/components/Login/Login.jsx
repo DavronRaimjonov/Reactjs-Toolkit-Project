@@ -1,23 +1,37 @@
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { icon } from "../../contrains";
-import { loginUserStart } from "../../slice/auth";
+import AuthServie from "../../servic/auth";
+import { ValidationEror } from "../";
+import {
+  signUserFailrue,
+  signUserStart,
+  signUserSuccses,
+} from "../../slice/auth";
 import Input from "../../UI/Input";
 const Login = () => {
   const dispatch = useDispatch();
   const { isLodaingIn } = useSelector((state) => state.auth);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const submitHendler = (e) => {
+  const submitHendler = async (e) => {
     e.preventDefault();
-    dispatch(loginUserStart());
+    dispatch(signUserStart());
+    const user = { email, password };
+    try {
+      const response = await AuthServie.userLogin(user);
+      dispatch(signUserSuccses(response.user));
+    } catch (error) {
+      dispatch(signUserFailrue(error.response.data.errors));
+    }
   };
   return (
     <section className="registr">
       <div className="container">
-        <img src={icon} alt="icon" />
-        <h1>Please login</h1>
         <form action="">
+          <img src={icon} alt="icon" />
+          <h1>Please login</h1>
+          <ValidationEror />
           <Input
             value={email}
             setValue={setEmail}
